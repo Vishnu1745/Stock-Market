@@ -1,11 +1,22 @@
-
 import React from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import StockCard from '@/components/StockCard';
 import { Search } from 'lucide-react';
-import { ComposedChart, Line, Area, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { 
+  ComposedChart, 
+  Line, 
+  Area, 
+  Bar, 
+  XAxis, 
+  YAxis, 
+  CartesianGrid, 
+  Tooltip, 
+  Legend, 
+  ResponsiveContainer,
+  LineChart 
+} from 'recharts';
 
 const Stocks: React.FC = () => {
   return (
@@ -111,7 +122,7 @@ const Stocks: React.FC = () => {
                 <Bar 
                   dataKey="performance" 
                   barSize={20} 
-                  fill={(entry: any) => entry.performance >= 0 ? '#00cc66' : '#cc0000'} 
+                  fill={(entry) => (entry.performance >= 0 ? '#00cc66' : '#cc0000').toString()} 
                 />
               </ComposedChart>
             </ResponsiveContainer>
