@@ -122,7 +122,7 @@ const Stocks: React.FC = () => {
                 <Bar 
                   dataKey="performance" 
                   barSize={20} 
-                  fill={(entry) => (entry.performance >= 0 ? '#00cc66' : '#cc0000').toString()} 
+                  fill="#8B5CF6"
                 />
               </ComposedChart>
             </ResponsiveContainer>
