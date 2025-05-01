@@ -15,6 +15,12 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import NotFound from "./pages/NotFound";
 
+// Article pages
+import WhatIsAStock from "./pages/articles/WhatIsAStock";
+import HowStockMarketWorks from "./pages/articles/HowStockMarketWorks";
+import FundamentalAnalysis from "./pages/articles/FundamentalAnalysis";
+import DollarCostAveraging from "./pages/articles/DollarCostAveraging";
+
 // Your Clerk publishable key
 const CLERK_PUBLISHABLE_KEY = "pk_test_c3VubnktY3Jvdy0yOS5jbGVyay5hY2NvdW50cy5kZXYk";
 
@@ -37,6 +43,13 @@ const App = () => (
               <Route path="/tools" element={<Tools />} />
               <Route path="/sign-in/*" element={<SignIn />} />
               <Route path="/sign-up/*" element={<SignUp />} />
+              
+              {/* Article routes */}
+              <Route path="/learn/what-is-a-stock" element={<WhatIsAStock />} />
+              <Route path="/learn/how-stock-market-works" element={<HowStockMarketWorks />} />
+              <Route path="/learn/fundamental-analysis" element={<FundamentalAnalysis />} />
+              <Route path="/learn/dollar-cost-averaging" element={<DollarCostAveraging />} />
+              
               <Route path="*" element={<NotFound />} />
             </Routes>
           </MainLayout>
