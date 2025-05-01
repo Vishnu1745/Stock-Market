@@ -2,22 +2,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { UserButton, useUser } from '@clerk/clerk-react';
+import { UserButton, useAuth } from '@clerk/clerk-react';
 import { Home, BookOpen, TrendingUp, Calculator } from 'lucide-react';
 
 const Navbar: React.FC = () => {
-  // Check if Clerk is available by trying to use its hook within a try/catch
-  let isClerkAvailable = true;
-  let isSignedIn = false;
+  const { isLoaded, isSignedIn } = useAuth();
   
-  try {
-    // This will throw an error if Clerk provider is not available
-    const { isSignedIn: clerkIsSignedIn } = useUser();
-    isSignedIn = clerkIsSignedIn ?? false;
-  } catch (error) {
-    isClerkAvailable = false;
-  }
-
   return (
     <nav className="border-b border-gray-200 bg-white sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,7 +37,7 @@ const Navbar: React.FC = () => {
             </div>
           </div>
           <div className="flex items-center">
-            {isClerkAvailable ? (
+            {isLoaded && (
               isSignedIn ? (
                 <UserButton afterSignOutUrl="/" />
               ) : (
@@ -60,16 +50,6 @@ const Navbar: React.FC = () => {
                   </Link>
                 </div>
               )
-            ) : (
-              // Display a placeholder when Clerk is not available
-              <div className="flex space-x-4">
-                <Link to="/sign-in">
-                  <Button variant="outline">Sign in</Button>
-                </Link>
-                <Link to="/sign-up">
-                  <Button>Sign up</Button>
-                </Link>
-              </div>
             )}
           </div>
         </div>
